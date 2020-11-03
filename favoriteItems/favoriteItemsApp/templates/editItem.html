@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Item # {{itemObj.id}}</h1>
+    <form action="/items/{{itemObj.id}}/update" method="post">
+        {% csrf_token %}
+        <p>Item Name: <input type="text" name="itemName" id="" value="{{itemObj.name}}" ></p>
+        <p>Description: <textarea name="itemdescription" id="" cols="30" rows="10" > {{itemObj.desc}}</textarea></p>
+        <p><input type="submit" value="Update Item"></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+item1 = Item.objects.create(name="Stainless Steel Cup")
+item2 = Item.objects.create(name="Air Force 1")
+item3 = Item.objects.create(name="Lakers Lebron Jersey")
+
+
+
+user1 = User.objects.create(firstName = "Ian", lastName = "B")
+user2 = User.objects.create(firstName = "Duayne", lastName = "G")
+user3 = User.objects.create(firstName = "James", lastName = "S")
+
+
+
+
+user3 = User.objects.get(id=3)
+user3.lastName = "Smalls"
+user3.save()
+
+
+item1.favoriters.add(user1)
+
+user2.fav_items.add(Item.objects.get(id=2))
+
+user1.fav_items.remove(Item.objects.get(id=1))
+
+user1.fav_items.all()

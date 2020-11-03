@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add an Item</h1>
+    
+    {% if messages %}
+  <ul class="messages">    
+      {% for message in messages %}    
+          <p style="color:red;">{{ message }}</p>    
+      {% endfor %}
+  </ul>
+  {% endif %}
+    <form action="/item/create" method="post">
+        {% csrf_token %}
+        <p>Item Name: <input type="text" name="itemName" id="" ></p>
+        <p>Description: <textarea name="itemDescription" id="" cols="30" rows="10" ></textarea></p>
+        <p><input type="submit" value="Add Item"></p>
+    </form>
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Action</th>
+        </tr>
+        {% for itemObj in allItems %}
+            <tr>
+                <td>{{itemObj.id}}</td>
+                <td>{{itemObj.name}}</td> 
+                <td><a href="/items/{{itemObj.id}}">View</a> | <a href="/items/{{itemObj.id}}/destroy">Delete</a> | <a href="/items/{{itemObj.id}}/edit">Edit</a></td>
+            </tr>
+        {% endfor %}
+        
+      </table>
+</body>
+</html>
