@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <title>Books & Author</title>
+</head>
+<h1>Add a Book</h1>
+<form action="/author/create" method="post">
+    {% csrf_token %}
+    <p>First Name: <input type="text" name="firstName" id=""></p>
+    <p>Last Name: <input type=" text " name="lastName" id=""> </p>
+    <p>Notes: <textarea name="notes" id="" cols="30" rows="10"></textarea></p>
+    <p><input type="submit" value="Add"></p>
+</form>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    {% for AuthorObj in allAuthor %}
+    <tr>
+        <td>{{AuthorObj.id}}</td>
+        <td>{{AuthorObj.firstName}} {{AuthorObj.lastName}}</td>
+        <td><a href="/author/{{AuthorObj.id}}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<body>
+
+</body>
+
+</html>
