@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <style>
+        .content {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+{{allShow}}
+
+<body>
+
+    <div class="content">
+        <h1>Edit Show {{ShowObj.id}}</h1>
+        <form action="/shows/{{ShowObj.id}}/update" method="POST">
+            {% csrf_token %}
+            <p>Title: </p><input type="text" name="Title" id="" placeholder="{{showInfo.title}}">
+            <p>Network:</p><input type=" text " name="Network" id="" placeholder="{{showInfo.network}}">
+            <p>Release Date:</p><input type="date" name="Date" id="" placeholder="{{showInfo.release_date}}">
+            <p>Descripton:</p><textarea name="Notes" id="" cols="30" rows="10" placeholder="{{showInfo.desc}}"></textarea>
+            <p><input type="submit" value="Update"></p>
+        </form>
+        <a href="/shows">Go to Show</a>
+    </div>
+</body>
+
+</html>

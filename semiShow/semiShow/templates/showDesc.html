@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read (One)</title>
+</head>
+
+
+{{allShow}}
+
+<body>
+    <form action="/shows" method="post">
+        <h1>TV Show: {{showInfo.id}}</h1>
+        <p>Title: {{showInfo.title}}</p>
+        <p>Network: {{showInfo.network}}</p>
+        <p>Release Date: {{showInfo.release_date}}</p>
+        <p>Description: {{showInfo.desc}}</p>
+        <p>Last Uploaded: {{showInfo.created_at}} </p>
+    </form>
+</body>
+
+<a href="/shows">Go Back</a>
+
+
+</html>
