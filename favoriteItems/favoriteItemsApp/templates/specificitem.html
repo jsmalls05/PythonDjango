@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Item Info: {{iteminfo.name}}</h1>
     <p>Item ID: {{iteminfo.id}}</p>
     <p>Description: {{iteminfo.desc}}</p>
-    
+
     <h4>Users who have favorited this item</h4>
     <ul>
-    {% for userObj in iteminfo.favoriters.all %}
+        {% for userObj in iteminfo.favoriters.all %}
         <li>{{userObj.firstName}}</li>
-    {% endfor %}
+        {% endfor %}
     </ul>
     <h5>Select more favoriters for this item</h5>
-   
+
     <form action="/addToFavorite/{{iteminfo.id}}" method="post">
         {% csrf_token %}
         <select name="userinfo" id="">
@@ -25,7 +27,9 @@
             <option value="{{userobj.id}}">{{userobj.firstName}} {{userobj.lastName}}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="Add">
+        <p><input type="submit" value="Add"></p>
+        <a href="/"><input type="button" value="Home" /></a>
     </form>
 </body>
+
 </html>
